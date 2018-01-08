@@ -1,7 +1,8 @@
 FROM gradle:alpine
 COPY . /app
 WORKDIR /app
-RUN GRADLE_USER_HOME=/app/.gradle gradle bootRepackage
+USER root
+RUN gradle bootRepackage
 
 FROM openjdk:8-jre-slim
 EXPOSE 7001
