@@ -7,6 +7,12 @@ spring:
   jackson:
     serialization.write_dates_as_timestamps: false
     deserialization.adjust_dates_to_context_time_zone: false
+  kafka:
+    consumer:
+      auto-offset-reset: 'earliest'
+      group-id: 'customerService'
+
+spring.sleuth.web.skipPattern: /ping|/favicon.ico|
 
 starter.service.props.testValue: dev.value
 

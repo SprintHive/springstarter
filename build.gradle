@@ -46,6 +46,7 @@ dependencies {
     compile('org.projectlombok:lombok:1.16.18')
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.1')
     compile('net.logstash.logback:logstash-logback-encoder:4.11')
+    compile("org.springframework.kafka:spring-kafka:${springKafkaVersion}")
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
