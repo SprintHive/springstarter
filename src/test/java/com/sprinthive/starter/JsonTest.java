@@ -24,7 +24,7 @@ public class JsonTest {
     private ExampleDto dto = ExampleDto.builder()
             .id(1505140851471L)
             .name("Testing json mapping")
-            .dateCreated(LocalDateTime.now())
+            .dateCreated(LocalDateTime.of(2018, 01, 25, 01, 02, 03))
             .dateOfBirth(LocalDate.of(2017, 9, 11))
             .build();
 
@@ -45,7 +45,8 @@ public class JsonTest {
         String json = "{\n" +
                 "  \"id\" : 1505140851471,\n" +
                 "  \"name\" : \"Testing json mapping\",\n" +
-                "  \"dateCreated\" : \"2017-09-11\"\n" +
+                "  \"dateCreated\" : \"2018-01-25T01:02:03\",\n" +
+                "  \"dateOfBirth\" : \"2017-09-11\"\n" +
                 "}";
 
         ExampleDto exampleDto = mapper.readValue(json, ExampleDto.class);

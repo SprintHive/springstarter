@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.5.6.RELEASE'
+        springBootVersion = '1.5.9.RELEASE'
     }
     repositories {
         maven {
@@ -42,6 +42,7 @@ repositories {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile("org.springframework.boot:spring-boot-starter-actuator")
     compile('org.projectlombok:lombok:1.16.18')
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.1')
     compile('net.logstash.logback:logstash-logback-encoder:4.11')

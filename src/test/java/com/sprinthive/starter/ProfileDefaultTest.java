@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -18,8 +19,8 @@ public class ProfileDefaultTest {
     @Autowired
     Environment environment;
 
-    @Autowired
-    private PropsService fooService;
+    @Value("${starter.service.props.testValue:default.testValue}")
+    private String testValue;
 
     @Test
     public void confirmActiveProfileIsTest() {
@@ -28,7 +29,6 @@ public class ProfileDefaultTest {
 
     @Test
     public void props() {
-        String testValue = fooService.getTestValue();
         log.debug(testValue);
         assertThat(testValue).isEqualTo("dev.value");
     }

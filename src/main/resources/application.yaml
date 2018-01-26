@@ -1,12 +1,12 @@
-server:
-  port: 7001
+server.port: 8080
+management.port: 9080
+endpoints.metrics.sensitive: false
 spring:
-  application:
-    name: spring-starter
+  application.name: spring-starter
+  sleuth.web.skipPattern: /ping|/favicon.ico|
   jackson:
     serialization.write_dates_as_timestamps: false
     deserialization.adjust_dates_to_context_time_zone: false
-spring.sleuth.web.skipPattern: /ping|/favicon.ico|
 
 starter.service.props.testValue: dev.value
 

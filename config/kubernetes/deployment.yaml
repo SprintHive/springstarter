@@ -25,11 +25,22 @@ spec:
           value: $version
         livenessProbe:
           initialDelaySeconds: 30
-          timeoutSeconds: 5
-          periodSeconds: 120
+          timeoutSeconds: 1
+          periodSeconds: 10
           httpGet:
-            path: /ping
-            port: 7001
+            path: /health
+            port: management
+        readinessProbe:
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+          periodSeconds: 5
+          httpGet:
+            path: /health
+            port: management
         ports:
-        - containerPort: 7001
+        - name: http
+          containerPort: 8080
+        - name: management
+          containerPort: 9080
+
       restartPolicy: Always

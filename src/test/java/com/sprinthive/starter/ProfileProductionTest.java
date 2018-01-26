@@ -3,6 +3,7 @@ package com.sprinthive.starter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
 import org.springframework.test.context.ActiveProfiles;
@@ -18,8 +19,8 @@ public class ProfileProductionTest {
     @Autowired
     Environment environment;
 
-    @Autowired
-    private PropsService fooService;
+    @Value("${starter.service.props.testValue:default.testValue}")
+    private String testValue;
 
     @Test
     public void confirmActiveProfileIsTest() {
@@ -29,7 +30,7 @@ public class ProfileProductionTest {
 
     @Test
     public void props() {
-        assertThat(fooService.getTestValue()).isEqualTo("prod.value");
+        assertThat(testValue).isEqualTo("prod.value");
     }
 
 }
