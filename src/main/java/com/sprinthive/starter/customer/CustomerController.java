@@ -28,8 +28,7 @@ public class CustomerController {
 
     @RequestMapping(value = "/customer", method = RequestMethod.POST)
     public ResponseEntity createCustomer(@Valid @RequestBody Customer customer) {
-        customerService.createCustomer(customer.getName());
+        customerService.submitCustomerApplication(customer.getName());
         return ResponseEntity.created(URI.create("/customer/" + customer.getName())).build();
-
     }
 }

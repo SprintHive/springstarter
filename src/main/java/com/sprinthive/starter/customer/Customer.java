@@ -5,9 +5,12 @@ import lombok.Value;
 
 import javax.validation.constraints.NotNull;
 
-@Builder
 @Value
+@Builder
 public class Customer {
+
     @NotNull
     private String name;
+
+    private String id;
 }

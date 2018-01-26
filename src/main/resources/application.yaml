@@ -8,9 +8,36 @@ spring:
     serialization.write_dates_as_timestamps: false
     deserialization.adjust_dates_to_context_time_zone: false
   kafka:
-    consumer:
-      auto-offset-reset: 'earliest'
-      group-id: 'customerService'
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  cloud:
+    stream:
+      bindings:
+        customerApplicationSubmitted:
+          producer.headerMode: raw
+          destination: customerApplicationSubmitted
+        customerOutput:
+          contentType: application/json
+          producer:
+            headerMode: raw
+            useNativeEncoding: true
+          destination: customer
+        customerInput:
+          producer.headerMode: raw
+          destination: customer
+          group: customerService
+
+      kstream.binder:
+        brokers: 127.0.0.1
+        zkNodes: 127.0.0.1
+        configuration:
+          application.id: customerService
+          key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+          value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+      kstream.output.producer:
+        keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        valueSerde: org.apache.kafka.common.serialization.Serdes$StringSerde
 
 spring.sleuth.web.skipPattern: /ping|/favicon.ico|
 
