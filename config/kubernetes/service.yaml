@@ -4,8 +4,8 @@ metadata:
   name: $name
 spec:
   ports:
-  - port: 7001
-    targetPort: 7001
+  - port: 8080
+    targetPort: 8080
     protocol: TCP
   selector:
     run: $name
